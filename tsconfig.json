@@ -25,6 +25,9 @@
     "baseUrl": "./src",
     "paths": {
       "@utils/*": ["utils/*"],
+      "@components/*": ["components/*"],
+      "@baseNavigator/*": ["baseNavigator/*"],
+      "@layouts/*": ["layouts/*"]
     }
   },
   "include": ["src"]

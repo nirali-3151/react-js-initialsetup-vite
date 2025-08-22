@@ -12,6 +12,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@utils": "/src/utils",
+      "@components": "/src/components",
+      "@baseNavigator": "/src/baseNavigator",
+      "@layouts": "/src/layouts",
     },
   },
 });
