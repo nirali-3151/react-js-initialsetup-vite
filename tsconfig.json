@@ -27,7 +27,8 @@
       "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
       "@baseNavigator/*": ["baseNavigator/*"],
-      "@layouts/*": ["layouts/*"]
+      "@layouts/*": ["layouts/*"],
+      "@reduxStore/*": ["reduxStore/*"]
     }
   },
   "include": ["src"]

@@ -15,6 +15,7 @@ export default defineConfig({
       "@components": "/src/components",
       "@baseNavigator": "/src/baseNavigator",
       "@layouts": "/src/layouts",
+      "@reduxStore": "/src/reduxStore"
     },
   },
 });
