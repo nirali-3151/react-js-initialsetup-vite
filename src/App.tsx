@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOnlineStatus } from "./utils/useOnlineOffline";
+import { useOnlineStatus } from "@utils/useOnlineOffline";
 
 function StatusBar() {
   const isOnline = useOnlineStatus();
