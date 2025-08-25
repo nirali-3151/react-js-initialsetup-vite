@@ -2,34 +2,16 @@ import Button from "@components/button/Button";
 import type { Column } from "@components/table/table.types";
 import type { User } from "@layouts/home/home.types";
 
-export const users = [
-  {
-    id: 1,
-    name: "Jane Cooper",
-    email: "jane.cooper@example.com",
-    role: "Admin",
-    status: "Active",
-  },
-  {
-    id: 2,
-    name: "Cody Fisher",
-    email: "cody.fisher@example.com",
-    role: "Member",
-    status: "Invited",
-  },
-  {
-    id: 3,
-    name: "Esther Howard",
-    email: "esther.howard@example.com",
-    role: "Owner",
-    status: "Active",
-  },
-];
-
 export const UserColumns: Column<User>[] = [
   { key: "name", header: "Name" },
   { key: "email", header: "Email" },
-  { key: "role", header: "Role" },
+  {
+    key: "company",
+    header: "Company",
+    render: (value: User["company"], row: User) => (
+      <span>{value.name}</span> // access nested property
+    ),
+  },
   {
     key: "status",
     header: "Status",
@@ -42,7 +24,7 @@ export const UserColumns: Column<User>[] = [
             : "bg-[color:var(--secondary)]/10 text-[color:var(--secondary)]"
         }`}
       >
-        {value}
+        Active
       </span>
     ),
   },

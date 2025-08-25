@@ -2,8 +2,9 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  role: string;
+  company: {
+    name: string;
+  };
   status: string;
   actions?: string;
 };
-

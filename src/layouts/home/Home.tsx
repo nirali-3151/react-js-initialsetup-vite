@@ -1,41 +1,31 @@
 import FallbackUI from "@components/fallbackUi/FallbackUI";
 import Table from "@components/table/Table";
-import { UserColumns, users } from "@constants/home";
+import { UserColumns } from "@constants/home";
+import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router";
-
-export async function getUserData() {
-  const response = await fetch("https://httpbin.org/delay/5");
-
-  if (!response.ok) {
-    throw new Response("Failed to fetch user data", {
-      status: response.status,
-    });
-  }
-
-  const json = await response.json();
-
-  console.log("json", json);
-
-  return { message: "Hello World" };
-}
+import { getUserListQuery } from "@services/query/userQuery";
+import { HOME_API_QUERY } from "@constants/querycontant";
 
 export async function loader() {
   return {
     message: "All User Data",
-    data: getUserData(),
+    data: getUserListQuery(),
   };
 }
 
 export function Home() {
-  const data = useLoaderData();
+  const loaderData = useLoaderData();
 
-  console.log("data -------", data);
+  const { data, isLoading } = useQuery({
+    queryKey: [HOME_API_QUERY.USER_DETAIL_CONST],
+    queryFn: getUserListQuery,
+  });
 
   return (
     <div className="mx-12">
-      <p className="heading-text text-center py-4">{data.message}</p>
-      <FallbackUI data={data.data}>
-        <Table columns={UserColumns} data={users} />
+      <p className="heading-text text-center py-4">{loaderData.message}</p>
+      <FallbackUI data={loaderData.data}>
+        <Table columns={UserColumns} data={data} isLoading={isLoading} />
       </FallbackUI>
     </div>
   );

@@ -13,8 +13,8 @@ export default function App() {
 
   return (
     <div className="bg-[var(--bg)] text-[var(--text)] min-h-screen">
-      <Header />
-      <BaseNavigator />
+        <Header />
+        <BaseNavigator />
     </div>
   );
 }

@@ -7,5 +7,6 @@ export type Column<T> = {
 
 export type TableProps<T extends { id: string | number }> = {
   columns: Column<T>[];
-  data: T[];
+  data: T[] | [] | any;
+  isLoading: Boolean
 };

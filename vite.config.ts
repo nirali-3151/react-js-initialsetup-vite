@@ -19,6 +19,7 @@ export default defineConfig({
       "@layouts": "/src/layouts",
       "@reduxStore": "/src/reduxStore",
       "@constants": "/src/constants",
+      "@services": "/src/services",
     },
   },
 });
