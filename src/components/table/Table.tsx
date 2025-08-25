@@ -27,33 +27,42 @@ const Table = <T extends { id: string | number }>({
 
         <tbody className="divide-y divide-[color:var(--secondary)]/20">
           {isLoading ? (
-            <Loader />
+            <tr>
+              <td colSpan={columns?.length}>
+                <Loader />
+              </td>
+            </tr>
+          ) : isEmpty(data) ? (
+            <tr>
+              <td
+                colSpan={columns?.length}
+                className="text-center heading-text py-4"
+              >
+                Data not found
+              </td>
+            </tr>
           ) : (
             data.map((row: any) => (
               <tr
                 key={row.id}
                 className="hover:bg-[color:var(--primary)]/5 transition-colors"
               >
-                {isEmpty(data) ? (
-                  <div className="heading-text text-center">Data not found</div>
-                ) : (
-                  columns.map((col, idx) => (
-                    <td
-                      key={String(col.key)}
-                      className={`px-4 py-3 ${
-                        col.align === "right" ? "text-right" : "text-left"
-                      } ${
-                        idx === 0
-                          ? "sticky left-0 z-10 bg-[var(--bg)] whitespace-nowrap"
-                          : ""
-                      }`}
-                    >
-                      {col.render
-                        ? col.render(row[col.key], row)
-                        : String(row[col.key])}
-                    </td>
-                  ))
-                )}
+                {columns.map((col, idx) => (
+                  <td
+                    key={String(col.key)}
+                    className={`px-4 py-3 ${
+                      col.align === "right" ? "text-right" : "text-left"
+                    } ${
+                      idx === 0
+                        ? "sticky left-0 z-10 bg-[var(--bg)] whitespace-nowrap"
+                        : ""
+                    }`}
+                  >
+                    {col.render
+                      ? col.render(row[col.key], row)
+                      : String(row[col.key])}
+                  </td>
+                ))}
               </tr>
             ))
           )}

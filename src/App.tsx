@@ -3,6 +3,7 @@ import { useOnlineStatus } from "@utils/useOnlineOffline";
 import BaseNavigator from "./baseNavigator";
 import Header from "@components/header/Header";
 import { getTheme, setTheme } from "@utils/theme";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const isOnline = useOnlineStatus();
@@ -13,8 +14,9 @@ export default function App() {
 
   return (
     <div className="bg-[var(--bg)] text-[var(--text)] min-h-screen">
-        <Header />
-        <BaseNavigator />
+      <Toaster />
+      <Header />
+      <BaseNavigator />
     </div>
   );
 }
