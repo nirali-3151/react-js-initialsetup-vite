@@ -1,16 +1,5 @@
 import React from "react";
-
-type Column<T> = {
-  key: keyof T;
-  header: string;
-  align?: "left" | "right";
-  render?: (value: any, row: T) => React.ReactNode;
-};
-
-type TableProps<T extends { id: string | number }> = {
-  columns: Column<T>[];
-  data: T[];
-};
+import type { TableProps } from "./table.types";
 
 const Table = <T extends { id: string | number }>({
   columns,
@@ -48,7 +37,7 @@ const Table = <T extends { id: string | number }>({
                     col.align === "right" ? "text-right" : "text-left"
                   } ${
                     idx === 0
-                      ? "sticky left-0 z-10 bg-white whitespace-nowrap"
+                      ? "sticky left-0 z-10 bg-[var(--bg)] whitespace-nowrap"
                       : ""
                   }`}
                 >

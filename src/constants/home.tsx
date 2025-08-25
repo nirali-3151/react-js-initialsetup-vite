@@ -1,4 +1,6 @@
 import Button from "@components/button/Button";
+import type { Column } from "@components/table/table.types";
+import type { User } from "@layouts/home/home.types";
 
 export const users = [
   {
@@ -24,7 +26,7 @@ export const users = [
   },
 ];
 
-export const UserColumns = [
+export const UserColumns: Column<User>[] = [
   { key: "name", header: "Name" },
   { key: "email", header: "Email" },
   { key: "role", header: "Role" },

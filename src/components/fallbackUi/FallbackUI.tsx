@@ -4,7 +4,7 @@ import { Await } from "react-router";
 
 type FallbackUIProps<T> = {
   data: any;
-  children: (resolvedData: T) => ReactNode;
+  children: ReactNode | ((resolvedData: T) => ReactNode);
 };
 
 const FallbackUI = <T,>({ data, children }: FallbackUIProps<T>) => {
