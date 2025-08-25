@@ -1,7 +1,6 @@
-import { useLoaderData, useNavigation } from "react-router";
+import React from "react";
+import { Await, useLoaderData } from "react-router";
 
-// Home.jsx (or your loader file)
-// Home.jsx (or Home.tsx if using TS)
 export async function getUserData() {
   const response = await fetch("https://httpbin.org/delay/5");
 
@@ -10,22 +9,36 @@ export async function getUserData() {
       status: response.status,
     });
   }
+
   const json = await response.json();
-  return json;
+
+  console.log("json", json);
+
+  return { message: "Hello World" };
 }
 
-const Home = () => {
+export async function loader() {
+  return {
+    message: "heelo",
+    data: getUserData(),
+  };
+}
+
+export function Home() {
   const data = useLoaderData();
-  const navigation = useNavigation();
-  console.log("data", data);
-  console.log("navigation", navigation);
+
+  console.log("data -------", data);
 
   return (
-    <div className="home-container">
-      <h1>Welcome to the Home Page</h1>
+    <div>
       <p>{data.message}</p>
+      <React.Suspense fallback={<p>Loading user data...</p>}>
+        <Await resolve={data.data}>
+          {(user) => <pre>{JSON.stringify(user, null, 2)}</pre>}
+        </Await>
+      </React.Suspense>
     </div>
   );
-};
+}
 
 export default Home;
