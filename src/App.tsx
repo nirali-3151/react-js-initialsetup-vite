@@ -12,7 +12,7 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-[var(--bg)] text-[var(--text)] min-h-screen">
       <Header />
       <BaseNavigator />
     </div>

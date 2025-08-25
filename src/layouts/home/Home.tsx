@@ -1,5 +1,5 @@
-import React from "react";
-import { Await, useLoaderData } from "react-router";
+import FallbackUI from "@components/fallbackUi/FallbackUI";
+import { useLoaderData } from "react-router";
 
 export async function getUserData() {
   const response = await fetch("https://httpbin.org/delay/5");
@@ -19,7 +19,7 @@ export async function getUserData() {
 
 export async function loader() {
   return {
-    message: "heelo",
+    message: "All User Data",
     data: getUserData(),
   };
 }
@@ -31,12 +31,10 @@ export function Home() {
 
   return (
     <div>
-      <p>{data.message}</p>
-      <React.Suspense fallback={<p>Loading user data...</p>}>
-        <Await resolve={data.data}>
-          {(user) => <pre>{JSON.stringify(user, null, 2)}</pre>}
-        </Await>
-      </React.Suspense>
+      <p className="heading-text text-center py-4">{data.message}</p>
+      <FallbackUI data={data.data}>
+        {(user) => <pre>{JSON.stringify(user, null, 2)}</pre>}
+      </FallbackUI>
     </div>
   );
 }

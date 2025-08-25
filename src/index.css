@@ -15,3 +15,9 @@
   --primary: #3b82f6;      /* blue-500 */
   --secondary: #9ca3af;    /* gray-400 */
 }
+
+@layer components {
+  .heading-text {
+    @apply text-xl font-bold text-[var(--text)];
+  }
+}
