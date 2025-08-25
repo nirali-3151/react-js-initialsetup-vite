@@ -1,4 +1,6 @@
 import FallbackUI from "@components/fallbackUi/FallbackUI";
+import Table from "@components/table/Table";
+import { UserColumns, users } from "@constants/home";
 import { useLoaderData } from "react-router";
 
 export async function getUserData() {
@@ -30,10 +32,10 @@ export function Home() {
   console.log("data -------", data);
 
   return (
-    <div>
+    <div className="mx-12">
       <p className="heading-text text-center py-4">{data.message}</p>
       <FallbackUI data={data.data}>
-        {(user) => <pre>{JSON.stringify(user, null, 2)}</pre>}
+        <Table columns={UserColumns} data={users} />
       </FallbackUI>
     </div>
   );

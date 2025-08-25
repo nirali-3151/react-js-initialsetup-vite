@@ -9,7 +9,7 @@ export default defineConfig({
         plugins: ["babel-plugin-react-compiler"],
       },
     }),
-    tailwindcss()
+    tailwindcss(),
   ],
   resolve: {
     alias: {
@@ -18,6 +18,7 @@ export default defineConfig({
       "@baseNavigator": "/src/baseNavigator",
       "@layouts": "/src/layouts",
       "@reduxStore": "/src/reduxStore",
+      "@constants": "/src/constants",
     },
   },
 });

@@ -28,7 +28,8 @@
       "@components/*": ["components/*"],
       "@baseNavigator/*": ["baseNavigator/*"],
       "@layouts/*": ["layouts/*"],
-      "@reduxStore/*": ["reduxStore/*"]
+      "@reduxStore/*": ["reduxStore/*"],
+      "@constants/*": ["constants/*"]
     }
   },
   "include": ["src"]
